@@ -1,24 +1,64 @@
-# README
+# EmployeeManagement
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application is using:
+* Rails: 7.1.2
+* Ruby 3.1.2
 
-Things you may want to cover:
+## Database
+* Postgresql
 
-* Ruby version
+### Create database
+Before running the migrations we need to create a database.
+Connecto to Postgres DB and run the following command.
+```
+rails db:create
+```
 
-* System dependencies
+### Configure database
+There is an example DB configuration file `database.yml` placed in `config` folder.
 
-* Configuration
+* Create ENV variable for DATABASE_USERNAME  and DATABASEPASSWORD
 
-* Database creation
+### Run migrations
+```
+rails db:migrate
+```
 
-* Database initialization
+## Run the application
+```
+rails s
+```
 
-* How to run the test suite
+## API for Create Employee
+```
+POST
+#{base_url}/api/v1/employees
 
-* Services (job queues, cache servers, search engines, etc.)
+Example body data
 
-* Deployment instructions
+{
+  "employee": {
+    "employee_id": "123CK",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "john.doe8@example.com",
+    "phone_numbers": ["9134567896", "9876543216"],
+    "doj": "2023-05-17",
+    "salary": 600000
+  }
+}
 
-* ...
+```
+
+## API for get employee Tax deduction
+```
+GET
+#{base_url}/api/v1/employees/tax_deduction
+
+Example body data
+
+{
+    "employee_id": "123CI"
+}
+
+```
